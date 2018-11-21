@@ -1,0 +1,100 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include <iomanip>
+#include <random>
+using namespace std;
+
+
+const int Len=10, Wid=10;
+void populateArray();
+void addArrays(int[Len][Wid],int[Len][Wid],int[Len][Wid]);
+int findSmallest(int[Len][Wid]);
+int  findLargest(int[Len][Wid]);
+void  printArray(int[Len][Wid]);
+int main(){ 
+//declarations
+    srand(time(0));
+    int array1[Len][Wid],   array2[Len][Wid],   array3[Len][Wid];
+//welcome and instructions
+   cout<<"\n\nHello. This program will printout two random 10x10 arrays and an array combining the two, \nas well as run statistics of all three.\n\n";
+void populateArray(int** array1);
+void populateArray(int** array2);
+   addArrays(array1,array2,array3);
+   cout<<"Array 1\n";
+   printArray(array1);
+   cout<<"\nArray 2\n";
+   printArray(array2);
+   cout<<"\nArray 3\n";
+   printArray(array3);
+   cout<<"Array 1 largest: "<<findLargest(array1)<<endl<<"Array 1 smallest: "<<findSmallest(array1)<<endl<<"Array 2 largest: "<<findLargest(array2)<<endl<<
+   "Array 2 smallest: "<<findSmallest(array2)<<endl<<"Array 3 largest: "<<findLargest(array3)<<endl<<"Array 3 smallest: "<<findSmallest(array3)<<endl;
+//goodbye message
+    cout<< "\n\nThanks for using the program! :)"; 
+return 0;}
+    
+    
+void populateArray(int array[10][10])
+  {  
+        for(int x=0;x<10;x++)
+        {
+          for(int y = 0; y < 10; y++)
+          {
+              array[x][y]= 1+ rand()%1000;
+          }
+        }
+  }
+  
+  
+void addArrays(int ARRay11[10][10],int ARRay22[10][10],int ARRay33[10][10])
+    {
+        for(int x = 0; x < 10; x++)
+        {
+          for(int y = 0; y < 10; y++)
+          {
+              ARRay33[x][y]= ARRay11[x][y] + ARRay22[x][y];
+          }
+        }
+    }
+    
+    
+int findSmallest(int ARRAYYLMAO[10][10])
+    {
+      int smol;
+        for(int x = 0; x < 10; x++)
+        {
+          for(int y = 0; y < 10; y++)
+          {
+             if (ARRAYYLMAO[x][y] <smol)
+              {smol=ARRAYYLMAO[x][y];}
+          }
+        }
+    return smol;
+    }
+    
+    
+int findLargest(int HOORAY[10][10])
+    {
+      int bigg;
+        for(int x = 0; x < 10; x++)
+        {
+          for(int y = 0; y < 10; y++)
+          {
+             if (HOORAY[x][y] >bigg)
+              {bigg=HOORAY[x][y];}
+          }
+        }
+    return bigg;
+    }
+    
+void printArray(int ARRay[10][10])
+    {
+        for(int x = 0; x < 10; x++)
+        {
+          for(int y = 0; y < 10; y++)
+          {
+              cout<<setw(10)<<ARRay[x][y];
+          }
+          cout<<endl;
+        }
+    }
